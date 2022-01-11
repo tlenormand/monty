@@ -1,0 +1,39 @@
+#include "monty.h"
+
+/**
+ * get_command - function that get the commmand
+ * @src: line given where get the command
+ * @i: index of the line
+ * Return: string containing the command, NULL if failled
+ */
+
+char *get_command(char *src, int i)
+{
+	int len = i;
+	char *cpy = NULL;
+
+	if (src == 0)
+		return (NULL);
+
+	while (src[len] >= 'a' && src[len] <= 'z')
+		len++;
+
+	len -= i;
+
+	cpy = (char *)malloc(sizeof(char) * (len + 1));
+	if (cpy == NULL)
+		return (NULL);
+
+	len = 0;
+
+	while (src[i] >= 'a' && src[i] <= 'z')
+	{
+		*(cpy + len) = *(src + i);
+		len++;
+		i++;
+	}
+
+	*(cpy + len) = '\0';
+
+	return (cpy);
+}

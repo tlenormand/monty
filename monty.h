@@ -1,10 +1,13 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MONTY_H
+#define MONTY_H
 #define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+/* -------------------------------------------------- */
+/* STRUCTURES */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,13 +41,24 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*global variable*/
 
-/*functions created before*/
+/* -------------------------------------------------- */
+/* GLOBAL VARIABLES */
 
-/*prototypes for the exercices*/
-int prettier(char *line, int line_number);
 
-/*function creates in exercices*/
+/* -------------------------------------------------- */
+/* PROTOTYPES */
 
-#endif /* MAIN_H */
+/* functions created before */
+int _strcmp(char *s1, char *s2);
+int _strlen(char *s);
+
+/* function created for the exercice */
+int prettier(char *line, int line_number, char **command);
+void pall(stack_t **stack, unsigned int line_number);
+void (*find_command(char *command, int line_number))(stack_t **, unsigned int);
+char *get_command(char *src, int i);
+int get_number(char *src, int i);
+
+
+#endif /* MONTY_H */
