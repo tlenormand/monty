@@ -1,9 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define _GNU_SOURCE
 
-
+#include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -22,7 +23,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -38,17 +38,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
 /*global variable*/
-// stack_t **head = 
 
 /*functions created before*/
 
-
 /*prototypes for the exercices*/
-
+int prettier(char *line, int line_number);
 
 /*function creates in exercices*/
-
 
 #endif /* MAIN_H */
