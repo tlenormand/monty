@@ -17,7 +17,6 @@ void op_add(stack_t **stack, unsigned int line_number)
 	}
 
 	result = (*stack)->n + (*stack)->next->n;
-
 	delete_dnodeint_at_index(stack, 0);
 	change_dnodeint_at_index(stack, 0, result);
 }

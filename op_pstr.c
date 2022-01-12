@@ -8,6 +8,18 @@
 
 void op_pstr(stack_t **stack, unsigned int line_number)
 {
-	(void) **stack;
-	(void) line_number;
+	stack_t *cpy = *stack;
+
+	if (*stack == NULL && cpy->n < 0 && cpy->n > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	while (cpy->n)
+	{
+		putchar(cpy->n);
+		cpy = cpy->next;
+	}
+	putchar('\n');
 }
