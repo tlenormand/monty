@@ -29,7 +29,6 @@ char *get_command(char *src, int i)
 	while ((src[i] != ' ' && src[i] != '\n') && src[i])
 	{
 		*(cpy + len) = *(src + i);
-		printf("src de i : %c\n", src[i]);
 		len++;
 		i++;
 	}
