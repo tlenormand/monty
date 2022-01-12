@@ -33,12 +33,16 @@ int (*find_command(char *command, int line_number))(stack_t **)
 	while (instruction[i].opcode)
 	{
 		if (_strcmp(command, instruction[i].opcode) == 0)
-			return (instruction[i].f);
+			{
+				free(command);
+				return (instruction[i].f);
+			}
 		i++;
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
 
 	free(command);
-	exit(EXIT_FAILURE);
+
+	return (unknow_instruction);
 }

@@ -13,7 +13,5 @@ int op_pint(stack_t **stack)
 
 	printf("%d\n", (*stack)->n);
 
-	delete_dnodeint_at_index(stack, 0);
-
 	return (0);
 }
