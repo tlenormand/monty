@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	FILE *fd;
 	unsigned int line_number = 0;
 	char line_buf[1024];
-	char *line, *command;
+	char *command;
 	int prettier_return, space = 0, size = 1024;
 
 	if (argc != 2)
@@ -28,8 +28,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	line = fgets(line_buf, size, fd);
-	while (line != NULL)
+	while (fgets(line_buf, size, fd) != NULL)
 	{
 		line_number++;
 
@@ -43,7 +42,6 @@ int main(int argc, char **argv)
 			if (prettier_return < 0)
 				op_err1(prettier_return, line_number, fd, line_buf);
 		}
-		line = fgets(line_buf, size, fd);
 	}
 
 	free_file(fd, line_buf);
