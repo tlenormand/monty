@@ -8,7 +8,8 @@ int main(int argc, char **argv)
 	char *line_buf = NULL;
 	ssize_t line_size = 0;
 	size_t line_buf_size = 0;
-	char *command = NULL;
+	char *command;
+	int prettier_return;
 
 	if (argc != 2)
 	{
@@ -27,17 +28,20 @@ int main(int argc, char **argv)
 	while (line_size != -1)
 	{
 		line_number++;
-		/* printf("line[%06d]: chars=%06ld, buf size=%06lu, contents: %s", line_number, line_size, line_buf_size, line_buf); */
 		if (line_buf[0] != '\n')
 		{
-			prettier(line_buf, line_number, &command);
-			free(command);
+			prettier_return = prettier(line_buf, line_number, &command);
+			/* if error in opcode */
+			if (prettier_return < 0)
+				op_err(prettier_return, line_number, fd, line_buf, command);
+			if (command)
+				free(command);
 		}
+		/* next line */
 		line_size = getline(&line_buf, &line_buf_size, fd);
 	}
 
-	free(line_buf);
-	fclose(fd);
-	free_dlistint(stack);
+	free_file(fd, line_buf, command);
+
 	return (0);
 }

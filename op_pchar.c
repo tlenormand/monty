@@ -6,19 +6,20 @@
  * @line_number: the number of the line in the file
  */
 
-void op_pchar(stack_t **stack, unsigned int line_number)
+int op_pchar(stack_t **stack)
 {
 	stack_t *cpy = *stack;
 
 	if (*stack == NULL)
-	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+		return (-12);
 
 	if (cpy->n > 0 && cpy->n < 127)
 	{
 		putchar(cpy->n);
 		putchar('\n');
 	}
+	else
+		return (-13);
+
+	return (0);
 }

@@ -45,10 +45,11 @@ int prettier(char *line, int line_number, char **command)
 				}
 				else
 				{
-					find_command(*command, line_number)(&stack, line_number);
-					return (0);
+					return (find_command(*command, line_number)(&stack));
 				}
 			}
+			else
+				free(command);
 		}
 	}
 

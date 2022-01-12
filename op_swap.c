@@ -6,17 +6,16 @@
  * @line_number: the number of the line in the file
  */
 
-void op_swap(stack_t **stack, unsigned int line_number)
+int op_swap(stack_t **stack)
 {
 	int tmp;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+		return (-4);
 
 	tmp = (*stack)->n;
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = tmp;
+
+	return (0);
 }

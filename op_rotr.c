@@ -6,8 +6,9 @@
  * @line_number: the number of the line in the file
  */
 
-void op_rotr(stack_t **stack, unsigned int line_number)
+int op_rotr(stack_t **stack)
 {
 	(void) **stack;
-	(void) line_number;
+
+	return (0);
 }

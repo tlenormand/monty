@@ -6,15 +6,14 @@
  * @line_number: the number of the line in the file
  */
 
-void op_pint(stack_t **stack, unsigned int line_number)
+int op_pint(stack_t **stack)
 {
 	if (*stack == NULL)
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+		return (-2);
 
 	printf("%d\n", (*stack)->n);
 
 	delete_dnodeint_at_index(stack, 0);
+
+	return (0);
 }
