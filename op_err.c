@@ -13,25 +13,25 @@ void op_err1(int err_code, int line_number, FILE *fd, char *line_buf)
 	switch (err_code)
 	{
 		case -1:
-			fprintf(stderr, "L%d: usage: push integer", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			break;
 		case -2:
-			fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+			fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 			break;
 		case -3:
-			fprintf(stderr, "L%d: can't pop an empty stack", line_number);
+			fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 			break;
 		case -4:
-			fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+			fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 			break;
 		case -5:
-			fprintf(stderr, "L%d: can't add, stack too short", line_number);
+			fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 			break;
 		case -6:
-			fprintf(stderr, "L%d: can't sub, stack too short", line_number);
+			fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 			break;
 		case -7:
-			fprintf(stderr, "L%d: can't div, stack too short", line_number);
+			fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 			break;
 	}
 
@@ -51,22 +51,22 @@ void op_err2(int err_code, int line_number, FILE *fd, char *line_buf)
 	switch (err_code)
 	{
 		case -8:
-			fprintf(stderr, "L%d: division by zero", line_number);
+			fprintf(stderr, "L%d: division by zero\n", line_number);
 			break;
 		case -9:
-			fprintf(stderr, "L%d: can't mul, stack too short", line_number);
+			fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 			break;
 		case -10:
-			fprintf(stderr, "L%d: can't mod, stack too short", line_number);
+			fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 			break;
 		case -11:
-			fprintf(stderr, "L%d: division by zero", line_number);
+			fprintf(stderr, "L%d: division by zero\n", line_number);
 			break;
 		case -12:
-			fprintf(stderr, "L%d: can't pchar, stack empty", line_number);
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 			break;
 		case -13:
-			fprintf(stderr, "L%d: can't pchar, value out of range", line_number);
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 			break;
 		case -99:
 			break;
