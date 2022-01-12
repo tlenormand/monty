@@ -8,7 +8,7 @@
  * @line_buf: the line read
  */
 
-void op_err(int err_code, int line_number, FILE *fd, char *line_buf, char *command)
+void op_err(int err_code, int line_number, FILE *fd, char *line_buf)
 {
 	switch (err_code)
 	{
@@ -51,9 +51,11 @@ void op_err(int err_code, int line_number, FILE *fd, char *line_buf, char *comma
 		case -13:
 			fprintf(stderr, "L%d: can't pchar, value out of range", line_number);
 			break;
+		case -99:
+			break;
 	}
 
-	free_file(fd, line_buf, command);
+	free_file(fd, line_buf);
 
 	exit(EXIT_FAILURE);
 }
