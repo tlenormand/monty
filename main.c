@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		while (line_buf[space] == ' ')
 			space++;
 
-		if (line_buf[space] != '\n')
+		if (line_buf[space] != '\n' && line_buf[space] != '#')
 		{
 			prettier_return = prettier(line_buf, line_number, &command);
 			if (prettier_return < 0)
