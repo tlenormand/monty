@@ -44,7 +44,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
 /* -------------------------------------------------- */
 /* GLOBAL VARIABLES */
 stack_t *stack;
@@ -57,9 +56,11 @@ int delete_dnodeint_at_index(stack_t **stack, unsigned int index);
 stack_t *add_dnodeint_end(stack_t **stack, const int n);
 stack_t *insert_dnodeint_at_index(stack_t **stack, unsigned int idx, int n);
 stack_t *add_dnodeint(stack_t **stack, const int n);
+stack_t *get_dnodeint_at_index(stack_t *stack, const int index);
 void free_dlistint(stack_t *stack);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
+int dlistint_len(stack_t *h);
 
 /* function created for the exercice */
 int prettier(char *line, int line_number, char **command);

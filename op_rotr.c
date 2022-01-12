@@ -8,6 +8,19 @@
 
 void op_rotr(stack_t **stack, unsigned int line_number)
 {
-	(void) **stack;
-	(void) line_number;
+	stack_t *cpy = *stack;
+	int end = dlistint_len(*stack);
+	int result = 0;
+
+	(void)line_number;
+
+	if (*stack)
+	{
+		cpy = get_dnodeint_at_index(*stack, end - 1);
+		result = cpy->n;
+		delete_dnodeint_at_index(stack, end - 1);
+		add_dnodeint(stack, result);
+	}
+	else
+		return;
 }
