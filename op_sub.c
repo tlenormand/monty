@@ -15,7 +15,7 @@ int op_sub(stack_t **stack)
 		return (-6);
 
 	result = (*stack)->n - (*stack)->next->n;
-	if (result < 0)
+	if ((*stack)->next->n < (*stack)->n)
 		result *= -1;
 
 	delete_dnodeint_at_index(stack, 0);
