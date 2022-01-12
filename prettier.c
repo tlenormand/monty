@@ -22,7 +22,7 @@ int prettier(char *line, int line_number, char **command)
 			continue;
 
 		/*get the command*/
-		else if (line[i] >= 'a' && line[i] <= 'z')
+		else if (line[i] != ' ')
 		{
 			*command = get_command(line, i);
 			while (line[i] != ' ' && line[i])
