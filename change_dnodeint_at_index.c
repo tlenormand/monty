@@ -15,18 +15,13 @@ int change_dnodeint_at_index(stack_t **stack, unsigned int index, int value)
 	if (*stack == NULL)
 		return (-1);
 
-	if (index == 0)
-		*stack = (*stack)->next;
-	else
+	while (index > 0)
 	{
-		while (index > 0)
-		{
 
-			*stack = (*stack)->next;
-			index--;
-			if (*stack == NULL)
-				return (-1);
-		}
+		*stack = (*stack)->next;
+		index--;
+		if (*stack == NULL)
+			return (-1);
 	}
 
 	(*stack)->n = value;
