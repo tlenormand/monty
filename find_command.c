@@ -7,7 +7,7 @@
  * Return: a function to the appropriate opcode
  */
 
-void (*find_command(char *command, int line_number))(stack_t **, unsigned int)
+int (*find_command(char *command, int line_number))(stack_t **)
 {
 	int i = 0;
 	instruction_t instruction[] = {

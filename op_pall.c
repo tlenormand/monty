@@ -7,10 +7,9 @@
  * @line_number: the number of the line in the file
  */
 
-void op_pall(stack_t **stack, unsigned int line_number)
+int op_pall(stack_t **stack)
 {
 	stack_t *cpy = *stack;
-	(void)line_number;
 
 	if (cpy)
 	{
@@ -20,4 +19,6 @@ void op_pall(stack_t **stack, unsigned int line_number)
 			cpy = cpy->next;
 		}
 	}
+
+	return (0);
 }

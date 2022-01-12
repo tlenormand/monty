@@ -41,7 +41,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	int (*f)(stack_t **stack);
 } instruction_t;
 
 
@@ -63,28 +63,31 @@ int _strlen(char *s);
 
 /* function created for the exercice */
 int prettier(char *line, int line_number, char **command);
-void (*find_command(char *command, int line_number))(stack_t **, unsigned int);
+int (*find_command(char *command, int line_number))(stack_t **);
 char *get_command(char *src, int i);
 int get_number(char *src, int i);
 int change_dnodeint_at_index(stack_t **stack, unsigned int index, int value);
+void free_file(FILE *fd, char *line_buf, char *command);
 
 /* op function */
+void op_err(int err_code, int line_number, FILE *fd, char *line_buf, char *command);
 stack_t *op_push(stack_t **stack, unsigned int line_number, int number);
-void op_pall(stack_t **stack, unsigned int line_number);
-void op_pint(stack_t **stack, unsigned int line_number);
-void op_pop(stack_t **stack, unsigned int line_number);
-void op_swap(stack_t **stack, unsigned int line_number);
-void op_add(stack_t **stack, unsigned int line_number);
-void op_nop(stack_t **stack, unsigned int line_number);
-void op_sub(stack_t **stack, unsigned int line_number);
-void op_div(stack_t **stack, unsigned int line_number);
-void op_mul(stack_t **stack, unsigned int line_number);
-void op_mod(stack_t **stack, unsigned int line_number);
-void op_pchar(stack_t **stack, unsigned int line_number);
-void op_pstr(stack_t **stack, unsigned int line_number);
-void op_rotr(stack_t **stack, unsigned int line_number);
-void op_rotl(stack_t **stack, unsigned int line_number);
-void op_stack(stack_t **stack, unsigned int line_number);
-void op_queue(stack_t **stack, unsigned int line_number);
+int op_pall(stack_t **stack);
+int op_pint(stack_t **stack);
+int op_pop(stack_t **stack);
+int op_swap(stack_t **stack);
+int op_add(stack_t **stack);
+int op_nop(stack_t **stack);
+int op_sub(stack_t **stack);
+int op_div(stack_t **stack);
+int op_mul(stack_t **stack);
+int op_mod(stack_t **stack);
+int op_pchar(stack_t **stack);
+int op_pstr(stack_t **stack);
+int op_rotr(stack_t **stack);
+int op_rotl(stack_t **stack);
+int op_stack(stack_t **stack);
+int op_queue(stack_t **stack);
+
 
 #endif /* MONTY_H */
