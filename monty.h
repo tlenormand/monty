@@ -67,11 +67,12 @@ int (*find_command(char *command, int line_number))(stack_t **);
 char *get_command(char *src, int i);
 int get_number(char *src, int i);
 int change_dnodeint_at_index(stack_t **stack, unsigned int index, int value);
-void free_file(FILE *fd, char *line_buf, char *command);
+void free_file(FILE *fd, char *line_buf);
 
 /* op function */
-void op_err(int err_code, int line_number, FILE *fd, char *line_buf, char *command);
+int unknow_instruction(stack_t **stack);
 stack_t *op_push(stack_t **stack, unsigned int line_number, int number);
+void op_err(int err_code, int line_number, FILE *fd, char *line_buf);
 int op_pall(stack_t **stack);
 int op_pint(stack_t **stack);
 int op_pop(stack_t **stack);

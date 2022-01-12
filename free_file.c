@@ -6,14 +6,12 @@
  * @line_buf: the line read
  */
 
-void free_file(FILE *fd, char *line_buf, char *command)
+void free_file(FILE *fd, char *line_buf)
 {
 	if (line_buf)
 		free(line_buf);
 	if (stack)
 		free_dlistint(stack);
-	if (command)
-		free(command);
 
 	fclose(fd);
 }

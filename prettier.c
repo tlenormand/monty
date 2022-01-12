@@ -29,27 +29,26 @@ int prettier(char *line, int line_number, char **command)
 				i++;
 
 			/*if command exist*/
-			if (*command != NULL)
+			if (*command)
 			{
 				/*if command is push*/
 				if (_strcmp(*command, "push") == 0)
 				{
+					free(*command);
 					while (line[i] == ' ')
 						i++;
 					/*Attention, comment savoir si c'est OK, si on a bien un nombre en retour
 					genre si on tombe sur un strin, il faut faire un exit dans get_number que je n'ai pas fait*/
 					/*attention si nombre négatif ? --> y a t il des nombres négatifs */
 					number = get_number(line, i);
+					if (!number)
+						return (-1);
 					stack = op_push(&stack, line_number, number);
 					return (0);
 				}
 				else
-				{
 					return (find_command(*command, line_number)(&stack));
-				}
 			}
-			else
-				free(command);
 		}
 	}
 
