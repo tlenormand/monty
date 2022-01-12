@@ -16,13 +16,18 @@ int delete_dnodeint_at_index(stack_t **stack, unsigned int index)
 	if (*stack == NULL)
 		return (-1);
 
-	while (index > 0)
+	if (index == 0)
+		*stack = (*stack)->next;
+	else
 	{
+		while (index > 0)
+		{
 
-		del = del->next;
-		index--;
-		if (del == NULL)
-			return (-1);
+			del = del->next;
+			index--;
+			if (del == NULL)
+				return (-1);
+		}
 	}
 
 	if (del->next != NULL)
