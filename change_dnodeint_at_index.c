@@ -17,7 +17,6 @@ int change_dnodeint_at_index(stack_t **stack, unsigned int index, int value)
 
 	while (index > 0)
 	{
-
 		*stack = (*stack)->next;
 		index--;
 		if (*stack == NULL)

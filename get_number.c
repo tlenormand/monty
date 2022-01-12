@@ -13,7 +13,7 @@ int get_number(char *src, int i)
 	char *cpy = NULL;
 
 	if (src == 0)
-		return (-1);
+		return (-123456);
 
 	if (src[len] == '-')
 		sign = -1, len++, i++;
@@ -25,7 +25,7 @@ int get_number(char *src, int i)
 
 	cpy = (char *)malloc(sizeof(char) * (len + 1));
 	if (cpy == NULL)
-		return (-1);
+		return (-123456);
 
 	len = 0;
 
