@@ -18,14 +18,14 @@ int prettier(char *line, int line_number, char **command)
 	for (i = 0; line[i]; i++)
 	{
 		/*skip spaces*/
-		if (line[i] == ' ')
+		if (line[i] == ' ' || line[i] == 9)
 			continue;
 
 		/*get the command*/
 		else if (line[i] != ' ')
 		{
 			*command = get_command(line, i);
-			while (line[i] != ' ' && line[i])
+			while (line[i] != ' ' && line[i] != 9 && line[i])
 				i++;
 
 			/*if command exist*/
@@ -35,7 +35,7 @@ int prettier(char *line, int line_number, char **command)
 				if (_strcmp(*command, "push") == 0)
 				{
 					free(*command);
-					while (line[i] == ' ')
+					while (line[i] == ' ' && line[i] != 9 && line[i])
 						i++;
 					number = get_number(line, i);
 					if (number == -123456)
