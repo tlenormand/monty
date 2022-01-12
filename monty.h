@@ -2,6 +2,9 @@
 #define MONTY_H
 #define _GNU_SOURCE
 
+/* -------------------------------------------------- */
+/* LIBRARIES */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,21 +47,44 @@ typedef struct instruction_s
 
 /* -------------------------------------------------- */
 /* GLOBAL VARIABLES */
-
+stack_t *stack;
 
 /* -------------------------------------------------- */
 /* PROTOTYPES */
 
 /* functions created before */
+int delete_dnodeint_at_index(stack_t **stack, unsigned int index);
+stack_t *add_dnodeint_end(stack_t **stack, const int n);
+stack_t *insert_dnodeint_at_index(stack_t **stack, unsigned int idx, int n);
+stack_t *add_dnodeint(stack_t **stack, const int n);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 
 /* function created for the exercice */
 int prettier(char *line, int line_number, char **command);
-void pall(stack_t **stack, unsigned int line_number);
 void (*find_command(char *command, int line_number))(stack_t **, unsigned int);
 char *get_command(char *src, int i);
 int get_number(char *src, int i);
+int change_dnodeint_at_index(stack_t **stack, unsigned int index, int value);
+
+/* op function */
+stack_t *op_push(stack_t **stack, unsigned int line_number, int number);
+void op_pall(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+void op_swap(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
+void op_nop(stack_t **stack, unsigned int line_number);
+void op_sub(stack_t **stack, unsigned int line_number);
+void op_div(stack_t **stack, unsigned int line_number);
+void op_mul(stack_t **stack, unsigned int line_number);
+void op_mod(stack_t **stack, unsigned int line_number);
+void op_pchar(stack_t **stack, unsigned int line_number);
+void op_pstr(stack_t **stack, unsigned int line_number);
+void op_rotr(stack_t **stack, unsigned int line_number);
+void op_rotl(stack_t **stack, unsigned int line_number);
+void op_stack(stack_t **stack, unsigned int line_number);
+void op_queue(stack_t **stack, unsigned int line_number);
 
 
 #endif /* MONTY_H */
