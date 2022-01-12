@@ -86,5 +86,4 @@ void op_rotl(stack_t **stack, unsigned int line_number);
 void op_stack(stack_t **stack, unsigned int line_number);
 void op_queue(stack_t **stack, unsigned int line_number);
 
-
 #endif /* MONTY_H */
