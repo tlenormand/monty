@@ -1,68 +1,57 @@
 #include "monty.h"
 
 /**
- * prettier - xxx
- * @line: xxx
- * @line_number: xxx
+ * prettier - function that check if the line is an opcode
+ * @line: line to control
+ * @line_number: the number of the line in the file
+ * @command: pointer to the opcode command
  *
- * Description: xxx
- * Return: xxx
+ * Description: first, get the command. If it is a push then push and return
+ * else checked if the command exist and execute the function pointed
+ * Return: 0 on success, else otherwise
  */
 
-int prettier(char *line, int line_number)
+int prettier(char *line, int line_number, char **command)
 {
-	int i, j = 0;
-	char *commande;
-	char *number = 0;
-
-	commande = malloc(sizeof(char) * strlen(line));
-	number = malloc(sizeof(char) * strlen(line));
+	int i, number;
 
 	for (i = 0; line[i]; i++)
 	{
+		/*skip spaces*/
 		if (line[i] == ' ')
-		{
-			j = 0;
-		}
+			continue;
+
+		/*get the command*/
 		else if (line[i] >= 'a' && line[i] <= 'z')
 		{
-			commande[j] = line[i];
-			j++;
-		}
-		else if (commande != NULL)
-		{
-			if (strcmp(commande, "push") == 0)
+			*command = get_command(line, i);
+
+			while (line[i] != ' ')
+				i++;
+
+			/*if command exist*/
+			if (*command != NULL)
 			{
-				if (line[i] == ' ' && number == 0)
+				/*if command is push*/
+				if (_strcmp(*command, "push") == 0)
 				{
-					continue;
-				}
-				else if (line[i] >= '0' && line[i] <= '9')
-				{
-					number[i] = line[i];
-				}
-				else if ((line[i] == ' ' || line[i] == '\n') && number != NULL)
-				{ /* renvoi vers une fonction qui traite number et l'ajoute a ma liste chainée */
-					printf("to do3\n");
-					return (0);
-				}
-			}
-			else
-			{
-				if (/* fonction qui return 0 ou 1 si commande existe dans instruction_t == 0 */ i == 0)
-				{
+					while (line[i] == ' ')
+						i++;
+					/*Attention, comment savoir si c'est OK, si on a bien un nombre en retour
+					genre si on tombe sur un strin, il faut faire un exit dans get_number que je n'ai pas fait*/
+					/*attention si nombre négatif ? --> y a t il des nombres négatifs */
+					number = get_number(line, i);
+					stack = op_push(&stack, line_number, number);
 					return (0);
 				}
 				else
 				{
-					printf("L%d: unknown instruction %s\n", line_number, commande);
-					return (EXIT_FAILURE);
+					find_command(*command, line_number)(&stack, line_number);
+					return (0);
 				}
 			}
 		}
 	}
-	free(number);
-	free(commande);
 
 	return (0);
 }
