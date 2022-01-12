@@ -15,7 +15,7 @@ char *get_command(char *src, int i)
 	if (src == 0)
 		return (NULL);
 
-	while (src[len] >= 'a' && src[len] <= 'z')
+	while ((src[len] != ' ' && src[len] != '\n') && src[len])
 		len++;
 
 	len -= i;
@@ -26,9 +26,10 @@ char *get_command(char *src, int i)
 
 	len = 0;
 
-	while (src[i] >= 'a' && src[i] <= 'z')
+	while ((src[i] != ' ' && src[i] != '\n') && src[i])
 	{
 		*(cpy + len) = *(src + i);
+		printf("src de i : %c\n", src[i]);
 		len++;
 		i++;
 	}
