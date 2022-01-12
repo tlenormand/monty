@@ -27,8 +27,7 @@ void (*find_command(char *command, int line_number))(stack_t **, unsigned int)
 		{"rotr", op_rotr},
 		{"stack", op_stack},
 		{"queue", op_queue},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 
 	while (instruction[i].opcode)
 	{
