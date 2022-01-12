@@ -3,7 +3,7 @@
 /**
  * op_pstr - prints the string starting at the top of the stack
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0
  */
 
 int op_pstr(stack_t **stack)

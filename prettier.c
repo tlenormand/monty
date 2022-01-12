@@ -37,9 +37,6 @@ int prettier(char *line, int line_number, char **command)
 					free(*command);
 					while (line[i] == ' ')
 						i++;
-					/*Attention, comment savoir si c'est OK, si on a bien un nombre en retour
-					genre si on tombe sur un strin, il faut faire un exit dans get_number que je n'ai pas fait*/
-					/*attention si nombre négatif ? --> y a t il des nombres négatifs */
 					number = get_number(line, i);
 					if (!number)
 						return (-1);

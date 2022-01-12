@@ -3,7 +3,7 @@
 /**
  * op_pchar - prints the char at the top of the stack, followed by a new line
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0 on success, -12 or -13 on error
  */
 
 int op_pchar(stack_t **stack)

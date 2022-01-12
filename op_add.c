@@ -3,7 +3,7 @@
 /**
  * op_add - adds the top two elements of the stack
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0 on success, -5 on error
  */
 
 int op_add(stack_t **stack)

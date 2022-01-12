@@ -72,7 +72,8 @@ void free_file(FILE *fd, char *line_buf);
 /* op function */
 int unknow_instruction(stack_t **stack);
 stack_t *op_push(stack_t **stack, unsigned int line_number, int number);
-void op_err(int err_code, int line_number, FILE *fd, char *line_buf);
+void op_err1(int err_code, int line_number, FILE *fd, char *line_buf);
+void op_err2(int err_code, int line_number, FILE *fd, char *line_buf);
 int op_pall(stack_t **stack);
 int op_pint(stack_t **stack);
 int op_pop(stack_t **stack);
