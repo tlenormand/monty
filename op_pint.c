@@ -3,7 +3,7 @@
 /**
  * op_pint - prints the value at the top of the stack
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0 on success, -2 on error
  */
 
 int op_pint(stack_t **stack)

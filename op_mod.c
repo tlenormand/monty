@@ -4,7 +4,7 @@
  * op_mod - computes the rest of the division of the second top element
  * of the stack by the top element of the stack
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0 on success, -10 or -12 on error
  */
 
 int op_mod(stack_t **stack)

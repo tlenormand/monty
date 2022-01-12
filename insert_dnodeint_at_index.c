@@ -2,7 +2,7 @@
 
 /**
  * insert_dnodeint_at_index - function inserts a new node at a given position
- * @h: pointer to the stack_t list
+ * @stack: pointer to the stack_t list
  * @idx: position to insert
  * @n: value
  * Return: the address of the new node, or NULL if it failed

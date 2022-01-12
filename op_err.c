@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * op_err - function that handle opcode error
+ * op_err1 - function that handle opcode error
  * @err_code: id of the error
  * @line_number: the number of the line in the file
  * @fd: file open
  * @line_buf: the line read
  */
 
-void op_err(int err_code, int line_number, FILE *fd, char *line_buf)
+void op_err1(int err_code, int line_number, FILE *fd, char *line_buf)
 {
 	switch (err_code)
 	{
@@ -33,6 +33,23 @@ void op_err(int err_code, int line_number, FILE *fd, char *line_buf)
 		case -7:
 			fprintf(stderr, "L%d: can't div, stack too short", line_number);
 			break;
+	}
+
+	op_err2(err_code, line_number, fd, line_buf);
+}
+
+/**
+ * op_err2 - function that handle opcode error
+ * @err_code: id of the error
+ * @line_number: the number of the line in the file
+ * @fd: file open
+ * @line_buf: the line read
+ */
+
+void op_err2(int err_code, int line_number, FILE *fd, char *line_buf)
+{
+	switch (err_code)
+	{
 		case -8:
 			fprintf(stderr, "L%d: division by zero", line_number);
 			break;

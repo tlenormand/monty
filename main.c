@@ -1,16 +1,19 @@
 #include "monty.h"
-#include <stdio.h>
+
+/**
+ * main - interperet a monty file (.m)
+ * @argc: number of arguments
+ * @argv: value of arguments
+ * Return: 0 always
+ */
 
 int main(int argc, char **argv)
 {
 	FILE *fd;
 	unsigned int line_number = 0;
 	char line_buf[1024];
-	char *line_size;
-	int line_buf_size = 1024;
-	char *command;
-	int prettier_return;
-	int space = 0;
+	char *line, *command;
+	int prettier_return, space = 0, size = 1024;
 
 	if (argc != 2)
 	{
@@ -25,8 +28,8 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	line_size = fgets(line_buf, line_buf_size, fd);
-	while (line_size != NULL)
+	line = fgets(line_buf, size, fd);
+	while (line != NULL)
 	{
 		line_number++;
 
@@ -37,12 +40,10 @@ int main(int argc, char **argv)
 		if (line_buf[space] != '\n')
 		{
 			prettier_return = prettier(line_buf, line_number, &command);
-			/* if error in opcode */
 			if (prettier_return < 0)
-				op_err(prettier_return, line_number, fd, line_buf);
+				op_err1(prettier_return, line_number, fd, line_buf);
 		}
-		/* next line */
-		line_size = fgets(line_buf, line_buf_size, fd);
+		line = fgets(line_buf, size, fd);
 	}
 
 	free_file(fd, line_buf);

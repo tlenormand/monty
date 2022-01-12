@@ -4,7 +4,7 @@
  * add_dnodeint - function that adds a new node
  * at the beginning of a stack_t list
  *
- * @head: pointer to the stack_t list
+ * @stack: pointer to the stack_t list
  * @n: value to add
  * Return: the address of the new element, or NULL if it failed
  */

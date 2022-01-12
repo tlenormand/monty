@@ -4,7 +4,7 @@
  * op_sub - subtracts the top element of the stack
  * from the second top element of the stack
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0 on success, -6 on error
  */
 
 int op_sub(stack_t **stack)

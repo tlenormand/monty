@@ -6,6 +6,7 @@
  *
  * @stack: pointer to the stack_t list
  * @index: position to indexete
+ * @value: new value to put
  * Return: 1 if it succeeded, -1 if it failed
  */
 
