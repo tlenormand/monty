@@ -2,10 +2,7 @@
 
 stack_t *op_push(stack_t **stack, unsigned int line_number, int number)
 {
-    if (*stack == NULL)
-        *stack = malloc(sizeof(stack_t));
-
-    *stack = insert_dnodeint_at_index(stack, 0, number);
+    *stack = add_dnodeint(stack, number);
 
     if (!stack)
     {

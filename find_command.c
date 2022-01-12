@@ -13,7 +13,7 @@ void (*find_command(char *command, int line_number))(stack_t **, unsigned int)
 	instruction_t instruction[] = {
 		{"pall", op_pall},
 		{"pint", op_pint},
-		{"pop", op_pint},
+		{"pop", op_pop},
 		{"swap", op_swap},
 		{"add", op_add},
 		{"nop", op_nop},

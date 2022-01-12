@@ -9,14 +9,15 @@
 
 void op_pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t *cpy = *stack;
 	(void) line_number;
 
-	if (*stack)
+	if (cpy)
 	{
-		while (*stack)
+		while (cpy)
 		{
-			printf("%d\n", (*stack)->n);
-			(*stack) = (*stack)->next;
+			printf("%d\n", cpy->n);
+			cpy = cpy->next;
 		}
 	}
 }
