@@ -14,7 +14,6 @@
 int prettier(char *line, int line_number, char **command)
 {
 	int i, number;
-	stack_t **stack = malloc(sizeof(stack_t) * 10);
 
 	for (i = 0; line[i]; i++)
 	{
@@ -42,14 +41,12 @@ int prettier(char *line, int line_number, char **command)
 					genre si on tombe sur un strin, il faut faire un exit dans get_number que je n'ai pas fait*/
 					/*attention si nombre négatif ? --> y a t il des nombres négatifs */
 					number = get_number(line, i);
-					printf("number : %d\n",number);
-					/* renvoi vers une fonction qui traite number et l'ajoute a ma liste chainée */
-					printf("to do3\n");
+					stack = op_push(&stack, line_number, number);
 					return (0);
 				}
 				else
 				{
-					find_command(*command, line_number)(stack, line_number);
+					find_command(*command, line_number)(&stack, line_number);
 					return (0);
 				}
 			}
