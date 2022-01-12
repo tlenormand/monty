@@ -5,9 +5,9 @@ int main(int argc, char **argv)
 {
 	FILE *fd;
 	unsigned int line_number = 0;
-	char *line_buf = NULL;
-	ssize_t line_size = 0;
-	size_t line_buf_size = 0;
+	char line_buf[1024];
+	char *line_size;
+	int line_buf_size = 1024;
 	char *command;
 	int prettier_return;
 	int space = 0;
@@ -25,8 +25,8 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	line_size = getline(&line_buf, &line_buf_size, fd);
-	while (line_size != -1)
+	line_size = fgets(line_buf, line_buf_size, fd);
+	while (line_size != NULL)
 	{
 		line_number++;
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 				op_err(prettier_return, line_number, fd, line_buf);
 		}
 		/* next line */
-		line_size = getline(&line_buf, &line_buf_size, fd);
+		line_size = fgets(line_buf, line_buf_size, fd);
 	}
 
 	free_file(fd, line_buf);
