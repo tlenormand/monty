@@ -9,15 +9,14 @@
 int op_rotl(stack_t **stack)
 {
 	stack_t *cpy = *stack;
-	int end = dlistint_len(*stack);
-	int result = 0;
+	int result;
 
 	if (*stack)
 	{
-		cpy = get_dnodeint_at_index(*stack, end - 1);
+		cpy = get_dnodeint_at_index(*stack, 0);
 		result = cpy->n;
-		delete_dnodeint_at_index(stack, end - 1);
-		add_dnodeint(stack, result);
+		delete_dnodeint_at_index(stack, 0);
+		add_dnodeint_end(stack, result);
 	}
 
 	return (0);
