@@ -10,9 +10,12 @@
 
 stack_t *op_push(stack_t **stack, unsigned int line_number, int number)
 {
-	*stack = add_dnodeint(stack, number);
+	if (stack_queu == 0)
+		*stack = add_dnodeint(stack, number);
+	else
+		*stack = add_dnodeint_end(stack, number);
 
-	if (!stack)
+	if (!*stack)
 	{
 		fprintf(stderr, "%d", line_number);
 		exit(EXIT_FAILURE);

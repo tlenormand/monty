@@ -16,6 +16,8 @@ int main(int argc, char **argv)
 	char *command;
 	int prettier_return, space = 0, size = 1024;
 
+	stack_queu = 0;
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -44,7 +46,6 @@ int main(int argc, char **argv)
 				op_err1(prettier_return, line_number, fd, line_buf, &stack);
 		}
 	}
-
 	free_file(fd, line_buf, &stack);
 
 	return (0);

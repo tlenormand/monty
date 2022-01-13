@@ -16,13 +16,8 @@ int prettier(char *line, int line_number, char **command, stack_t **stack)
 {
 	int i, number;
 
-	for (i = 0; line[i]; i++) /*convert tab to space*/
-	{
-		if (line[i] == 9)
-			line[i] = ' ';
-		if (line[i] == '#' || line[i] == '\n')
-			line[i] = '\0';
-	}
+	line = clean_line(line);
+
 	for (i = 0; line[i]; i++)
 	{
 		if (line[i] == ' ')
@@ -47,6 +42,10 @@ int prettier(char *line, int line_number, char **command, stack_t **stack)
 					*stack = op_push(stack, line_number, number);
 					return (0);
 				}
+				else if (_strcmp(*command, "stack") == 0)
+					free(*command), stack_queu = 0;
+				else if (_strcmp(*command, "queue") == 0)
+					free(*command), stack_queu = 1;
 				else
 					return (find_command(*command, line_number)(stack));
 			}

@@ -16,7 +16,6 @@ stack_t *add_dnodeint_end(stack_t **stack, const int n)
 
 	if (new == NULL)
 		return (NULL);
-
 	new->n = n;
 	new->next = NULL;
 
@@ -34,5 +33,8 @@ stack_t *add_dnodeint_end(stack_t **stack, const int n)
 		new->prev = last;
 	}
 
-	return (new);
+	while ((*stack)->prev)
+		*stack = (*stack)->prev;
+
+	return (*stack);
 }
