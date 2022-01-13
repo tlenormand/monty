@@ -4,8 +4,8 @@
  * get_dnodeint_at_index - function that adds a new node
  * at the beginning of a stack_t list
  *
- * @head: pointer to the stack_t list
- * @n: value to add
+ * @stack: pointer to the stack_t list
+ * @index: index to get node
  * Return: the address of the new element, or NULL if it failed
  */
 
