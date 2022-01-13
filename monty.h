@@ -46,7 +46,7 @@ typedef struct instruction_s
 
 /* -------------------------------------------------- */
 /* GLOBAL VARIABLES */
-
+int stack_queu;
 
 /* -------------------------------------------------- */
 /* PROTOTYPES */
@@ -69,6 +69,7 @@ int get_number(char *src, int i);
 int change_dnodeint_at_index(stack_t **stack, unsigned int index, int value);
 stack_t *get_dnodeint_at_index(stack_t *stack, const int index);
 void free_file(FILE *fd, char *line_buf, stack_t **stack);
+char *clean_line(char *line);
 
 /* op function */
 int unknow_instruction(stack_t **stack);
