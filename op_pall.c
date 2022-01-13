@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
- * op_div - prints all the values on the stack
+ * op_pall - prints all the values on the stack
  * starting from the top of the stack
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0
  */
 
 int op_pall(stack_t **stack)

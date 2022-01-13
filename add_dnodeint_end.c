@@ -2,9 +2,9 @@
 
 /**
  * add_dnodeint_end - function that adds a new node
- * at the end of a dlistint_t list
+ * at the end of a stack_t list
  *
- * @head: pointer to the dlistint_t list
+ * @stack: pointer to the stack_t list
  * @n: value to add
  * Return: the address of the new element, or NULL if it failed
  */

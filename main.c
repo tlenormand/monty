@@ -1,16 +1,19 @@
 #include "monty.h"
-#include <stdio.h>
+
+/**
+ * main - interperet a monty file (.m)
+ * @argc: number of arguments
+ * @argv: value of arguments
+ * Return: 0 always
+ */
 
 int main(int argc, char **argv)
 {
 	FILE *fd;
 	unsigned int line_number = 0;
-	char *line_buf = NULL;
-	ssize_t line_size = 0;
-	size_t line_buf_size = 0;
+	char line_buf[1024];
 	char *command;
-	int prettier_return;
-	int space = 0;
+	int prettier_return, space = 0, size = 1024;
 
 	if (argc != 2)
 	{
@@ -21,12 +24,11 @@ int main(int argc, char **argv)
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
-	line_size = getline(&line_buf, &line_buf_size, fd);
-	while (line_size != -1)
+	while (fgets(line_buf, size, fd) != NULL)
 	{
 		line_number++;
 
@@ -34,15 +36,12 @@ int main(int argc, char **argv)
 		while (line_buf[space] == ' ')
 			space++;
 
-		if (line_buf[space] != '\n')
+		if (line_buf[space] != '\n' && line_buf[space] != '#')
 		{
 			prettier_return = prettier(line_buf, line_number, &command);
-			/* if error in opcode */
 			if (prettier_return < 0)
-				op_err(prettier_return, line_number, fd, line_buf);
+				op_err1(prettier_return, line_number, fd, line_buf);
 		}
-		/* next line */
-		line_size = getline(&line_buf, &line_buf_size, fd);
 	}
 
 	free_file(fd, line_buf);

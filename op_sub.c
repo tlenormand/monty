@@ -4,7 +4,7 @@
  * op_sub - subtracts the top element of the stack
  * from the second top element of the stack
  * @stack: pointer to the address of the stack
- * @line_number: the number of the line in the file
+ * Return: 0 on success, -6 on error
  */
 
 int op_sub(stack_t **stack)
@@ -15,7 +15,7 @@ int op_sub(stack_t **stack)
 		return (-6);
 
 	result = (*stack)->n - (*stack)->next->n;
-	if (result < 0)
+	if ((*stack)->next->n < (*stack)->n)
 		result *= -1;
 
 	delete_dnodeint_at_index(stack, 0);

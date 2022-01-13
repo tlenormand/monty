@@ -16,32 +16,31 @@ int prettier(char *line, int line_number, char **command)
 	int i, number;
 
 	for (i = 0; line[i]; i++)
+		if (line[i] == 9)
+			line[i] = ' ';
+
+	for (i = 0; line[i]; i++) /*convert tab to space*/
 	{
-		/*skip spaces*/
 		if (line[i] == ' ')
 			continue;
 
-		/*get the command*/
-		else if (line[i] >= 'a' && line[i] <= 'z')
+		else if (line[i] != ' ') /*get the command*/
 		{
 			*command = get_command(line, i);
 			while (line[i] != ' ' && line[i])
 				i++;
 
-			/*if command exist*/
-			if (*command)
+			if (*command) /*if command exist*/
 			{
-				/*if command is push*/
-				if (_strcmp(*command, "push") == 0)
+				if (_strcmp(*command, "push") == 0) /*if command is push*/
 				{
 					free(*command);
-					while (line[i] == ' ')
+					while (line[i] == ' ' && line[i])
 						i++;
-					/*Attention, comment savoir si c'est OK, si on a bien un nombre en retour
-					genre si on tombe sur un strin, il faut faire un exit dans get_number que je n'ai pas fait*/
-					/*attention si nombre négatif ? --> y a t il des nombres négatifs */
+					if (line[i] == '\n' || line[i] == '\0')
+						return (-1);
 					number = get_number(line, i);
-					if (!number)
+					if (number == -123456)
 						return (-1);
 					stack = op_push(&stack, line_number, number);
 					return (0);
