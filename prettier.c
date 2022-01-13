@@ -37,6 +37,8 @@ int prettier(char *line, int line_number, char **command)
 					free(*command);
 					while (line[i] == ' ' && line[i])
 						i++;
+					if (line[i - 1] == '\n')
+						return (-1);
 					number = get_number(line, i);
 					if (number == -123456)
 						return (-1);
