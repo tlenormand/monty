@@ -14,9 +14,7 @@ int op_sub(stack_t **stack)
 	if (*stack == NULL || (*stack)->next == NULL)
 		return (-6);
 
-	result = (*stack)->n - (*stack)->next->n;
-	if ((*stack)->next->n < (*stack)->n)
-		result *= -1;
+	result = (*stack)->next->n - (*stack)->n;
 
 	delete_dnodeint_at_index(stack, 0);
 	change_dnodeint_at_index(stack, 0, result);
