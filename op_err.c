@@ -70,8 +70,6 @@ void op_err2(int err_code, int line_number, FILE *fd, char *line_buf)
 			break;
 		case -99:
 			break;
-		case -99:
-			break;
 	}
 
 	free_file(fd, line_buf);
