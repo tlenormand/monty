@@ -13,7 +13,7 @@ int op_pchar(stack_t **stack)
 	if (*stack == NULL)
 		return (-12);
 
-	if (cpy->n > 0 && cpy->n < 127)
+	if (cpy->n >= 0 && cpy->n <= 127)
 	{
 		putchar(cpy->n);
 		putchar('\n');

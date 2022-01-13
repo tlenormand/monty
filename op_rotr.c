@@ -8,7 +8,17 @@
 
 int op_rotr(stack_t **stack)
 {
-	(void) **stack;
+	stack_t *cpy = *stack;
+	int end = dlistint_len(*stack);
+	int result = 0;
 
-	return (0);
+	if (*stack)
+	{
+		cpy = get_dnodeint_at_index(*stack, end - 1);
+		result = cpy->n;
+		delete_dnodeint_at_index(stack, end - 1);
+		add_dnodeint(stack, result);
+	}
+	else
+		return (0);
 }

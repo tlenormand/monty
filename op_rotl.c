@@ -8,7 +8,16 @@
 
 int op_rotl(stack_t **stack)
 {
-	(void) **stack;
+	stack_t *cpy = *stack;
+	int result;
 
-	return (0);
+	if (*stack)
+	{
+		cpy = get_dnodeint_at_index(*stack, 0);
+		result = cpy->n;
+		delete_dnodeint_at_index(stack, 0);
+		add_dnodeint_end(stack, result);
+	}
+	else
+		return (0);
 }
