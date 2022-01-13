@@ -6,14 +6,14 @@
  * Return: void
  */
 
-void free_dlistint(stack_t *stack)
+void free_dlistint(stack_t **stack)
 {
-	stack_t *freed = stack;
+	stack_t *freed = *stack;
 
-	while (stack != NULL)
+	while (*stack != NULL)
 	{
-		stack = stack->next;
+		*stack = (*stack)->next;
 		free(freed);
-		freed = stack;
+		freed = *stack;
 	}
 }

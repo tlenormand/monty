@@ -10,6 +10,7 @@
 int main(int argc, char **argv)
 {
 	FILE *fd;
+	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 	char line_buf[1024];
 	char *command;
@@ -38,13 +39,13 @@ int main(int argc, char **argv)
 
 		if (line_buf[space] != '\n' && line_buf[space] != '#')
 		{
-			prettier_return = prettier(line_buf, line_number, &command);
+			prettier_return = prettier(line_buf, line_number, &command, &stack);
 			if (prettier_return < 0)
-				op_err1(prettier_return, line_number, fd, line_buf);
+				op_err1(prettier_return, line_number, fd, line_buf, &stack);
 		}
 	}
 
-	free_file(fd, line_buf);
+	free_file(fd, line_buf, &stack);
 
 	return (0);
 }
