@@ -11,5 +11,7 @@ int op_stack(stack_t **stack)
 {
 	(void) **stack;
 
+	stack_queu = 0;
+
 	return (0);
 }
