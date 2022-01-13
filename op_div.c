@@ -17,7 +17,7 @@ int op_div(stack_t **stack)
 	if ((*stack)->n == 0)
 		return (-8);
 
-	result = (*stack)->n / (*stack)->next->n;
+	result = (*stack)->next->n / (*stack)->n;
 
 	delete_dnodeint_at_index(stack, 0);
 	change_dnodeint_at_index(stack, 0, result);
