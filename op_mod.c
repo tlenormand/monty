@@ -15,7 +15,7 @@ int op_mod(stack_t **stack)
 		return (-10);
 
 	if ((*stack)->n == 0)
-		return (-12);
+		return (-11);
 
 	result = (*stack)->next->n % (*stack)->n;
 
