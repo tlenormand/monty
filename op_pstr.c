@@ -11,17 +11,18 @@ int op_pstr(stack_t **stack)
 	stack_t *cpy = *stack;
 
 	if (!*stack)
-		return (-12);
+	{
+		putchar('\n');
+		return (0);
+	}
 
-	while (cpy->n > 0 && cpy->n < 127 && cpy)
+	while ((cpy->n > 0 && cpy->n < 127 && cpy) || !*stack)
 	{
 		putchar(cpy->n);
 		if (!cpy->next)
 			break;
 		cpy = cpy->next;
 	}
-	if (cpy->n < 0 || cpy->n > 127)
-		return (-13);
 
 	putchar('\n');
 
