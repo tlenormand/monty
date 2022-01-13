@@ -21,6 +21,9 @@ int get_number(char *src, int i)
 	while (src[len] >= '0' && src[len] <= '9')
 		len++;
 
+	if ((src[len] != ' ' && src[len] != '\n') && src[len])
+		return (-123456);
+
 	len -= i;
 
 	cpy = (char *)malloc(sizeof(char) * (len + 1));
