@@ -18,6 +18,6 @@ int op_rotl(stack_t **stack)
 		delete_dnodeint_at_index(stack, 0);
 		add_dnodeint_end(stack, result);
 	}
-	else
-		return (0);
+
+	return (0);
 }
