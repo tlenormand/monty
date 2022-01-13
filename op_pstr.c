@@ -10,6 +10,9 @@ int op_pstr(stack_t **stack)
 {
 	stack_t *cpy = *stack;
 
+	if (*stack == NULL && cpy->n < 0 && cpy->n > 127)
+		return (-13);
+
 	while (cpy->n)
 	{
 		putchar(cpy->n);
